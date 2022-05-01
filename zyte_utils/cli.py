@@ -48,14 +48,13 @@ def stats_command(
     start: datetime,
     end: datetime,
     shub_file: str,
-    csv: bool,
     output: str,
     extractor,
 ):
     total = get_stats_from_period(start, end, extractor, shub_file)
     df = pd.DataFrame(total.items(), columns=["spider", stat])
 
-    if csv and output:
+    if output:
         file_output = output.format(start=start, end=end)
         df.to_csv(file_output, index=False)
         typer.echo(f"Wrote {file_output}", err=True)

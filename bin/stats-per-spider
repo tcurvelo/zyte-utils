@@ -15,11 +15,10 @@ def main(
     start: datetime = typer.Option(misc.now() - timedelta(days=30)),
     end: datetime = typer.Option(misc.now()),
     shub_file: str = typer.Option("scrapinghub.yml"),
-    csv: bool = typer.Option(False),
-    output: str = typer.Option("output.csv"),
+    output: str = typer.Option(None),
 ):
     extractor = cli.stat_extractor(stat)
-    cli.stats_command(stat, start, end, shub_file, csv, output, extractor)
+    cli.stats_command(stat, start, end, shub_file, output, extractor)
 
 
 if __name__ == "__main__":

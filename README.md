@@ -6,17 +6,15 @@ Yet another bunch of cli utilities for Zyte's Scrapy Cloud.
 
 - `stats-per-spider`
 
-Collect stats from all projects listed in `scrapinhub.yml`, and group them by spider:
+Collect stats from all projects listed in `scrapinghub.yml`, and group them by spider:
 
-    ./bin/stats-per-spider "links/pages" \
-        --start 2022-01-01 --end 2022-02-01 \
+    ❯ stats-per-spider "links/pages" \
         --shub-file="my_awesome_project/scrapinghub.yml" \
-        --csv --output="page_count_jan22.csv"
+        --start 2022-01-01 --end 2022-02-01 \
+        --output="page_count_jan22.csv"
 
 - `requests-per-spider`
 
-Do the same but for count for valid (aka. chargeable) SPM/Crawlera response codes
+Do the same but count for valid (aka. chargeable) SPM/Crawlera response codes
 
-    ./bin/requests-per-spider.py
-        --start 2022-01-01 --end 2022-02-01 \
-        --csv --output="requests_feb.py"
+    ❯ requests-per-spider --start 2022-01-01 --output="requests_feb.csv"
