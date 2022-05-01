@@ -22,5 +22,8 @@ def get_ids(projects_file=None) -> List[str]:
     projects_file = projects_file or find_project_file()
     with open(projects_file, "r") as zyte_file:
         zyte_config = load(zyte_file, Loader=Loader)
-    projects_ids = {p.get("id") for p in zyte_config.get("projects").values()}
-    return projects_ids
+    projects_ids = {
+        p.get("id") if isinstance(p, dict) else p
+        for p in zyte_config.get("projects").values()
+    }
+    return list(projects_ids)
