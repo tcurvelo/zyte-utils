@@ -1,11 +1,11 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="zyte-tools",
+    name="zyte-utils",
     version="0.1",
     packages=find_packages(),
     scripts=[
-        "bin/stats_per_spider.py",
-        "bin/requests_per_spider.py",
+        "bin/stats-per-spider",
+        "bin/requests-per-spider",
     ],
 )
