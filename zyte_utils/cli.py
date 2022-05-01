@@ -34,8 +34,11 @@ def get_stats_from_period(
 
 def stat_extractor(stat) -> int:
     def extractor(project, job_summary):
-        stats = project.jobs.get(job_summary["key"]).metadata.get("scrapystats") or {}
-        return stats.get(stat, 0)
+        # look up for the stat in the summary before requesting for the job
+        if not (result := job_summary.get(stat)):
+            stats = project.jobs.get(job_summary["key"]).metadata.get("scrapystats", {})
+            result = stats.get(stat, 0)
+        return result
 
     return extractor
 
