@@ -4,5 +4,8 @@ setup(
     name="zyte-tools",
     version="0.1",
     packages=find_packages(),
-    scripts=["bin/stats_per_spider.py"],
+    scripts=[
+        "bin/stats_per_spider.py",
+        "bin/requests_per_spider.py",
+    ],
 )
