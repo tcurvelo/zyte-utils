@@ -12,7 +12,7 @@ client = dash.get_shub_client()
 
 
 def echo_df(df):
-    typer.echo(df.to_string(index=False))
+    typer.echo(df.to_string(index=False, na_rep="-"))
 
 
 def get_stats_from_period(
