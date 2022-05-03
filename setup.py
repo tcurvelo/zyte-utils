@@ -7,5 +7,6 @@ setup(
     scripts=[
         "bin/stats-per-spider",
         "bin/requests-per-spider",
+        "bin/spiders-health",
     ],
 )

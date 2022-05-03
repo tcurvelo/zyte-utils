@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import pandas as pd
+import typer
+
+from zyte_utils.cli import echo_df
+from zyte_utils.health import fetch_all_spiders_from_all_projects
+
+app = typer.Typer()
+
+
+@app.command()
+def main(
+    shub_file: str = typer.Option("scrapinghub.yml"),
+    output: str = typer.Option(None),
+):
+    last_jobs = fetch_all_spiders_from_all_projects(shub_file)
+    df = pd.DataFrame(last_jobs.values()).sort_values(by="spider")
+    if output:
+        df.to_csv(output, index=False)
+    else:
+        echo_df(df.fillna("-"))
+
+
+if __name__ == "__main__":
+    app()

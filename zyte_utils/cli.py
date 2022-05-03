@@ -6,10 +6,13 @@ import pandas as pd
 import typer
 from scrapinghub.client.projects import Project
 
-from zyte_utils import dash, misc, project
+from zyte_utils import dash, project
 
-app = typer.Typer()
 client = dash.get_shub_client()
+
+
+def echo_df(df):
+    typer.echo(df.to_string(index=False, na_rep="-"))
 
 
 def get_stats_from_period(
@@ -59,4 +62,4 @@ def stats_command(
         df.to_csv(file_output, index=False)
         typer.echo(f"Wrote {file_output}", err=True)
     else:
-        typer.echo(df.to_string(index=False))
+        echo_df(df)

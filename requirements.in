@@ -1,4 +1,6 @@
 pyaml
-scrapinghub
+scrapinghub[msgpack]
 pandas
 typer
+httpx
+jmespath
